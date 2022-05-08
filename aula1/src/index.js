@@ -1,22 +1,31 @@
-import React from 'react'
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import './style.css'
 
-function sum(a, b) {
-  return a + b
-}
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      clock: 1000,
+      copo: 'agua'
+    }
+  }
 
-function primeiroJSX() {
-  return (
-    <div className="test">
-      Estevão
-      <h1>Soma : {sum(10, 20)}</h1>
-    </div>
-  )
-}
+  alterarCopo = () => {
+    this.setState({
+      copo: 'refrigerante'
+    })
+  }
 
-const App = () => {
-  return <div className="App">{primeiroJSX()}</div>
+  render() {
+    const { clock, copo } = this.state
+    return (
+      <div>
+        <hi>{clock}</hi>
+        <button onClick={() => this.alterarCopo()}>{copo}</button>
+      </div>
+    )
+  }
 }
 
 const rootElement = document.getElementById('root')
